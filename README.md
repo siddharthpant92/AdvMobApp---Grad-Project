@@ -1,3 +1,3 @@
 # AdvMobApp---Grad-Project
 
-Nate Sid grad project
+Nate and Sid
