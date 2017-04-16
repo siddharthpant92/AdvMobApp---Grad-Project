@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F7EAC901E98813900D15D67 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EAC8F1E98813900D15D67 /* AboutViewController.swift */; };
+		1FF54B3C1EA3F9A7008B24DD /* StreamPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF54B3B1EA3F9A7008B24DD /* StreamPreviewViewController.swift */; };
 		1FFE24641E8C51B5009E0F8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE24631E8C51B5009E0F8F /* AppDelegate.swift */; };
 		1FFE24661E8C51B5009E0F8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE24651E8C51B5009E0F8F /* ViewController.swift */; };
 		1FFE24691E8C51B5009E0F8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFE24671E8C51B5009E0F8F /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		1F7EAC8F1E98813900D15D67 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		1FF54B3B1EA3F9A7008B24DD /* StreamPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamPreviewViewController.swift; sourceTree = "<group>"; };
 		1FFE24601E8C51B5009E0F8F /* pathos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pathos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFE24631E8C51B5009E0F8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFE24651E8C51B5009E0F8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				1FFE24631E8C51B5009E0F8F /* AppDelegate.swift */,
 				1FFE24651E8C51B5009E0F8F /* ViewController.swift */,
 				1F7EAC8F1E98813900D15D67 /* AboutViewController.swift */,
+				1FF54B3B1EA3F9A7008B24DD /* StreamPreviewViewController.swift */,
 				1FFE24671E8C51B5009E0F8F /* Main.storyboard */,
 				1FFE246A1E8C51B5009E0F8F /* Assets.xcassets */,
 				1FFE246C1E8C51B5009E0F8F /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				1F7EAC901E98813900D15D67 /* AboutViewController.swift in Sources */,
 				1FFE24661E8C51B5009E0F8F /* ViewController.swift in Sources */,
 				1FFE24641E8C51B5009E0F8F /* AppDelegate.swift in Sources */,
+				1FF54B3C1EA3F9A7008B24DD /* StreamPreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
