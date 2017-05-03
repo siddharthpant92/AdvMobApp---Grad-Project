@@ -11,10 +11,12 @@ import UIKit
 class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoViewDelegate
 {
 
-    
     @IBOutlet var vrView: GVRVideoView!
     
     let videoURL = "https://s3-us-west-1.amazonaws.com/mybeautifulhome/Flat-Equirectangular_360.mp4"
+    
+    var isFinished = false //Set to true when video has finished playing
+    var isError = false //Set to true if video fails to load
     
     
     override func viewDidLoad()
@@ -23,13 +25,11 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
         
         vrView.load(from: URL(string: videoURL))
         vrView.enableCardboardButton = true
+        vrView.enableInfoButton = false
         
         vrView.delegate = self
         
         vrView.displayMode = GVRWidgetDisplayMode.fullscreenVR
-        
-        print("Mode: VR")
-        
     }
     
     override func didReceiveMemoryWarning()
@@ -39,43 +39,43 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
     }
     
     
-    
-    
     //MARK:- Widget View
-    func widgetView(_ widgetView: GVRWidgetView!, didLoadContent content: Any!)
-    {
-        if content is NSURL
-        {
-            print("didLoadContent")
-        }
-    }
+//    func widgetView(_ widgetView: GVRWidgetView!, didLoadContent content: Any!)
+//    {
+//    }
     
     func widgetView(_ widgetView: GVRWidgetView!, didFailToLoadContent content: Any!, withErrorMessage errorMessage: String!)
     {
-        print("didn't load: \(errorMessage)")
+        isError = true
+        vrView.displayMode = GVRWidgetDisplayMode.embedded
     }
     
     func widgetView(_ widgetView: GVRWidgetView!, didChange displayMode: GVRWidgetDisplayMode)
     {
-        print("did change")
         if(displayMode == GVRWidgetDisplayMode.embedded)
         {
-            print("not full screen mode")
             vrView.pause()
+            
+            if(isFinished == true)
+            {
+                self.performSegue(withIdentifier: "VRToAbout", sender: self)
+            }
+            else if(isError == true)
+            {
+                let alert = UIAlertController(title: "Oops", message: "Something went wrong with loading your video. Please go back and try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         else
         {
-            print("full screen mode")
             vrView.play()
         }
-
     }
     
-    func widgetViewDidTap(_ widgetView: GVRWidgetView!)
-    {
-        print("tapped")
-    }
-    
+//    func widgetViewDidTap(_ widgetView: GVRWidgetView!)
+//    {
+//    }
     
     
     
@@ -84,9 +84,8 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
     {
         if position >= videoView.duration()
         {
-            //GO TO INFORMATION PAGE
-            //            videoView.seek(to: 0)
-            //            videoView.play()
+            isFinished = true
+            vrView.displayMode = GVRWidgetDisplayMode.embedded
         }
     }
 

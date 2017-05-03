@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="106.59670164917542"/>
+            <point key="canvasLocation" x="1690" y="-340"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ij2-wG-Ua2">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MK9-CE-ais" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400.8" y="107.49625187406298"/>
+            <point key="canvasLocation" x="785" y="423"/>
         </scene>
         <!--Mode View Controller-->
         <scene sceneID="V2m-nA-F5z">
@@ -151,11 +151,12 @@
                     </view>
                     <connections>
                         <outlet property="vrView" destination="Lg8-Hj-if6" id="4WI-Ex-A7l"/>
+                        <segue destination="hMq-UL-fTg" kind="show" identifier="VRToAbout" id="09g-it-ng1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beV-fA-2Ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="-28"/>
+            <point key="canvasLocation" x="1572" y="422"/>
         </scene>
         <!--Full Screen Mode View Controller-->
         <scene sceneID="VlM-pF-qOz">
@@ -172,11 +173,12 @@
                     </view>
                     <connections>
                         <outlet property="videoVRView" destination="aUp-TB-Pys" id="aSf-Ab-ko3"/>
+                        <segue destination="hMq-UL-fTg" kind="show" identifier="FullscreenToAbout" id="LaA-zE-oPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayO-5k-xRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2165.5999999999999" y="665.21739130434787"/>
+            <point key="canvasLocation" x="1572" y="1195"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="3dI-h8-6Ga">
@@ -247,7 +249,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzB-EQ-jon" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eXj-mu-4ws" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1297.5" y="875.70422535211264"/>
+            <point key="canvasLocation" x="2478" y="770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3A1-RV-4mG">
@@ -265,7 +267,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pa5-xX-Bvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50.399999999999999" y="110.19490254872565"/>
+            <point key="canvasLocation" x="988" y="-340"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hbS-u2-xm7">
@@ -283,7 +285,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiC-Iu-zbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615" y="876"/>
+            <point key="canvasLocation" x="2478" y="-77"/>
         </scene>
     </scenes>
     <resources>
@@ -294,4 +296,7 @@
         <image name="streambutton" width="160" height="164"/>
         <image name="yesbutton" width="150" height="150"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gRa-6z-fud"/>
+    </inferredMetricsTieBreakers>
 </document>
