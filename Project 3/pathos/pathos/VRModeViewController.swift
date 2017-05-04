@@ -29,13 +29,17 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
         
         vrView.delegate = self
         
+        //This is what makes the video VR mode by default
         vrView.displayMode = GVRWidgetDisplayMode.fullscreenVR
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        let alert = UIAlertController(title: "Memory issue!!", message: "You don't have enough memory on your phone. Please clear some memeory and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -46,18 +50,19 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
     
     func widgetView(_ widgetView: GVRWidgetView!, didFailToLoadContent content: Any!, withErrorMessage errorMessage: String!)
     {
-        isError = true
-        vrView.displayMode = GVRWidgetDisplayMode.embedded
+        isError = true //There was an error loading the video. eg: no internet
+        vrView.displayMode = GVRWidgetDisplayMode.embedded //The VR mode is exitted.
     }
     
     func widgetView(_ widgetView: GVRWidgetView!, didChange displayMode: GVRWidgetDisplayMode)
     {
-        if(displayMode == GVRWidgetDisplayMode.embedded)
+        if(displayMode == GVRWidgetDisplayMode.embedded) //If the user is not in VR mode
         {
             vrView.pause()
             
             if(isFinished == true)
             {
+                //User is taken to the about page after video finishes playing.
                 self.performSegue(withIdentifier: "VRToAbout", sender: self)
             }
             else if(isError == true)
@@ -69,6 +74,7 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
         }
         else
         {
+            //User is in VR mode and the video should start playing
             vrView.play()
         }
     }
@@ -84,6 +90,7 @@ class VRModeViewController: UIViewController, GVRWidgetViewDelegate, GVRVideoVie
     {
         if position >= videoView.duration()
         {
+            //Video has finished playing.
             isFinished = true
             vrView.displayMode = GVRWidgetDisplayMode.embedded
         }

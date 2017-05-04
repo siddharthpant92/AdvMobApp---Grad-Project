@@ -16,7 +16,7 @@ class FullScreenModeViewController: UIViewController, GVRWidgetViewDelegate, GVR
     let videoURL = "https://s3-us-west-1.amazonaws.com/mybeautifulhome/Flat-Equirectangular_360.mp4"
     
     var isFinished = false //Set to true when video finishes playing
-    var isError = false //Set to true when video fails to load
+    var isError = false //Set to true if video fails to load
     
     override func viewDidLoad()
     {
@@ -27,13 +27,19 @@ class FullScreenModeViewController: UIViewController, GVRWidgetViewDelegate, GVR
         videoVRView.enableInfoButton = false
         
         videoVRView.delegate = self
+        
+        //This is what makes the view fullscreen by default
         videoVRView.displayMode = GVRWidgetDisplayMode.fullscreen
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        let alert = UIAlertController(title: "Memory issue!!", message: "You don't have enough memory on your phone. Please clear some memeory and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
     }
 
 
@@ -47,17 +53,18 @@ class FullScreenModeViewController: UIViewController, GVRWidgetViewDelegate, GVR
 
     func widgetView(_ widgetView: GVRWidgetView!, didFailToLoadContent content: Any!, withErrorMessage errorMessage: String!)
     {
-        isError = true
-        videoVRView.displayMode = GVRWidgetDisplayMode.embedded
+        isError = true //There was an error loading the video. eg: no internet
+        videoVRView.displayMode = GVRWidgetDisplayMode.embedded //The fullscreen mode is exitted.
     }
 
     func widgetView(_ widgetView: GVRWidgetView!, didChange displayMode: GVRWidgetDisplayMode)
     {
-        if(displayMode == GVRWidgetDisplayMode.embedded)
+        if(displayMode == GVRWidgetDisplayMode.embedded) //If the user is not in full screen mode
         {
             videoVRView.pause()
             if(isFinished == true)
             {
+                //User is taken to the about page after video finishes playing.
                 self.performSegue(withIdentifier: "FullscreenToAbout", sender: self)
             }
             else if(isError == true)
@@ -69,6 +76,7 @@ class FullScreenModeViewController: UIViewController, GVRWidgetViewDelegate, GVR
         }
         else
         {
+            //User is in fullscreen mode and video should start playing.
             videoVRView.play()
         }
     }
@@ -86,6 +94,7 @@ class FullScreenModeViewController: UIViewController, GVRWidgetViewDelegate, GVR
     {
         if position >= videoView.duration()
         {
+            //Video has finished playing. 
             isFinished = true
             videoVRView.displayMode = GVRWidgetDisplayMode.embedded
         }
