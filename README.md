@@ -1,5 +1,3 @@
 # AdvMobApp---Grad-Project
 
-Nate and Sid
-
-test
+http://pathosvr.com/portfolio/beautiful-home/
